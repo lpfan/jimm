@@ -1,0 +1,6 @@
+Django
+djangorestframework
+pylint-django
+MySQL-python
+requests
+Pillow
