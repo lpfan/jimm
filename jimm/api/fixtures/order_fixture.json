@@ -1,0 +1,16 @@
+[
+{
+    "fields": {
+        "status": "pending",
+        "uuid": "abababababababababababababababab",
+        "qrcode_uuid": "ababab",
+        "ready_date": null,
+        "client": null,
+        "bike": "test bike",
+        "created_date": "2015-03-26T22:32:29Z",
+        "description": "test description"
+    },
+    "model": "api.order",
+    "pk": 1
+}
+]
