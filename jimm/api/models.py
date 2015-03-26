@@ -1,6 +1,15 @@
 from django.db import models
+from django.contrib.auth.model import User
+from rest_framework.authtoken.models import Token
 
 from jimm.shared_lib.utils import generate_uuid
+
+
+class User(User):
+
+    def save(self, *args, **kwargs):
+        Token.objects.create(user=self)
+        super(User, self).save(*args, **kwargs)
 
 
 class Client(models.Model):
