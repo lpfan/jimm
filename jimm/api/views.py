@@ -24,3 +24,12 @@ class OrderListView(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     renderer_classes = (JSONRenderer,)
     serializer_class = OrderSerializer
+
+
+class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Detail view for order
+    """
+
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
