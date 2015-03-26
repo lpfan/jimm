@@ -18,7 +18,7 @@ class OrderTestCase(BaseTestCase):
         }
         resp = self.client.post(self.endpoint_url, data=json.dumps(post_data),
                                 content_type=self.content_type)
-        self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.status_code, 201)
         new_order = json.loads(resp.content)
         self.assertEqual(len(new_order['uuid']), 32)
         db_order = Order.objects.get(uuid=new_order['uuid'])

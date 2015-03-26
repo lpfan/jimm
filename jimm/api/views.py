@@ -19,13 +19,8 @@ class ServiceOrderListView(generics.ListCreateAPIView):
     pass
 
 
-class OrderView(APIView):
+class OrderListView(generics.ListCreateAPIView):
 
+    queryset = Order.objects.all()
     renderer_classes = (JSONRenderer,)
-
-    def post(self, request):
-        serializer = OrderSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        new_order = Order.objects.create(**serializer.validated_data)
-        serializer = OrderSerializer(new_order)
-        return Response(serializer.data)
+    serializer_class = OrderSerializer
