@@ -1,11 +1,12 @@
 define([
     'jquery',
     'underscore',
-    'backbone'
-], function($, _, Backbone){
+    'backbone',
+    'config'
+], function($, _, Backbone, config){
     
     var OrderModel = Backbone.Model.extend({
-        urlRoot: ''
+        urlRoot: config.apiUrl + '/order/'
     });
     
     return OrderModel;

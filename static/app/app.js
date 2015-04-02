@@ -9,21 +9,22 @@ define([
     
     var Router = Marionette.AppRouter.extend({
         appRoutes: {
-            'order': 'orderRoute'
-        },
-
-        orderRoute: function () {
-            
+            'order': 'orderRoute',
+            'order/new': 'newOrderRoute'
         }
     });
     
     var API = {
         orderRoute: function(){
             App.content.show(new OrderView());
+        },
+        
+        newOrderRoute: function(){
+            
         }
     }
-    
-    App.addInitializer(function(){
+
+    App.on('start', function(){
         App.addRegions({
             content: '#content'
         });
@@ -32,9 +33,6 @@ define([
             controller: API
         });
         
-    });
-    
-    App.on('start', function(){
         Backbone.history.start();
     });
     
