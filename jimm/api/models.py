@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.model import User
+from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
 from jimm.shared_lib.utils import generate_uuid

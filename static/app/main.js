@@ -13,12 +13,15 @@ require.config({
         text: 'lib/requirejs-text',
         // Views
         orderView: 'views/order_view',
+        authView: 'views/auth_view',
         // Templates
         orderContentTemplate: 'templates/order_template.hb',
+        authTemplate: 'templates/auth_template.hb',
         // Collections,
         orderCollection: 'collections/order',
         // Model,
-        orderModel: 'models/order'
+        orderModel: 'models/order',
+        authModel: 'models/auth',
     },
     
     shim: {

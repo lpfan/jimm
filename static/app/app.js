@@ -10,7 +10,8 @@ define([
     var Router = Marionette.AppRouter.extend({
         appRoutes: {
             'order': 'orderRoute',
-            'order/new': 'newOrderRoute'
+            'order/new': 'newOrderRoute',
+            'auth': 'authRoute'
         }
     });
     
@@ -21,8 +22,12 @@ define([
         
         newOrderRoute: function(){
             
+        },
+        
+        authRoute: function(){
+            
         }
-    }
+    };
 
     App.on('start', function(){
         App.addRegions({
