@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractBaseUser
 from rest_framework.authtoken.models import Token
 
 from jimm.shared_lib.utils import generate_uuid
@@ -12,10 +12,16 @@ class User(User):
         super(User, self).save(*args, **kwargs)
 
 
-class Client(models.Model):
+class Client(AbstractBaseUser):
 
-    email = models.EmailField(blank=True, null=True)
+    email = models.EmailField(unique=True)
     phone = models.CharField(max_length=15, blank=True, null=True)
+
+    def get_full_name(self):
+        return "%s" % self.email
+
+    def get_short_name(self):
+        return "%s" % self.email
 
 
 class Order(models.Model):

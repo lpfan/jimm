@@ -51,3 +51,9 @@ class AuthTokenSerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs
+
+
+class ClienSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Client
