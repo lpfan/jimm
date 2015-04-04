@@ -4,6 +4,10 @@
     <h4>Client Registration Form</h4>
     <div id="js-register-data">
         <div class="form-group">
+            <label for="inputEmail1">Username</label>
+            <input type="email" class="form-control js-username-input" id="inputEmail1" placeholder="Enter email"/>
+         </div>
+        <div class="form-group">
             <label for="inputEmail1">Email address</label>
             <input type="email" class="form-control js-email-input" id="inputEmail1" placeholder="Enter email"/>
          </div>

@@ -2,7 +2,7 @@ import json
 
 from jimm.api.tests.base import BaseTestCase
 from jimm.api.models import (
-    Client
+    User
 )
 
 class RegistrationTestCase(BaseTestCase):
@@ -13,6 +13,7 @@ class RegistrationTestCase(BaseTestCase):
 
     def test_register_client(self):
         post_data = {
+            'username': 'testuser',
             'email': 'test@mail.com',
             'password': 'testpassword',
             'phone': ''
@@ -21,5 +22,5 @@ class RegistrationTestCase(BaseTestCase):
                                 content_type=self.content_type)
         self.assertEqual(resp.status_code, 201)
         json_resp = json.loads(resp.content)
-        client = Client.objects.get(id=json_resp['id'])
+        client = User.objects.get(id=json_resp['id'])
         self.assertEqual(client.email, post_data['email'])

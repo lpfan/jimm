@@ -17,6 +17,7 @@ define([
         registerClient: function(evt){
             evt.preventDefault();
             var data = {
+                username: $('#js-register-data input.js-username-input').val(),
                 email: $('#js-register-data input.js-email-input').val(),
                 password: $('#js-register-data input.js-password-input').val(),
                 phone: $('#js-register-data input.js-phone-input').val()

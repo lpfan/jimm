@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractBaseUser
+from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
 from jimm.shared_lib.utils import generate_uuid
@@ -7,21 +7,12 @@ from jimm.shared_lib.utils import generate_uuid
 
 class User(User):
 
-    def save(self, *args, **kwargs):
-        Token.objects.create(user=self)
-        super(User, self).save(*args, **kwargs)
-
-
-class Client(AbstractBaseUser):
-
-    email = models.EmailField(unique=True)
+    USERNAME_FIELD = 'email'
     phone = models.CharField(max_length=15, blank=True, null=True)
 
-    def get_full_name(self):
-        return "%s" % self.email
-
-    def get_short_name(self):
-        return "%s" % self.email
+    def save(self, *args, **kwargs):
+        super(User, self).save(*args, **kwargs)
+        Token.objects.create(user=self)
 
 
 class Order(models.Model):
@@ -43,7 +34,7 @@ class Order(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     ready_date = models.DateTimeField(blank=True, null=True)
     qrcode_uuid = models.CharField(max_length=6, unique=True, null=True)
-    client = models.ForeignKey(Client, null=True)
+    client = models.ForeignKey(User, null=True)
 
     def save(self, *args, **kwargs):
         self.uuid = generate_uuid(length=32)

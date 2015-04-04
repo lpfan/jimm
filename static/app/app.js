@@ -6,8 +6,9 @@ define([
     'orderView',
     'authView',
     'registerView',
-    'authModel'
-], function($, _, Backbone, Marionette, OrderView, authView, RegisterView, AuthModel){
+    'authModel',
+    'dashboard_view',
+], function($, _, Backbone, Marionette, OrderView, authView, RegisterView, AuthModel, DashboardView){
     var App = new Marionette.Application();
     
     var Router = Marionette.AppRouter.extend({
@@ -15,7 +16,8 @@ define([
             'order': 'orderRoute',
             'order/new': 'newOrderRoute',
             'auth': 'authRoute',
-            'register': 'registerRoute'
+            'register': 'registerRoute',
+            'dashboard': 'dashboardRoute'
         }
     });
     
@@ -44,6 +46,10 @@ define([
         
         registerRoute: function(){
             App.content.show(new RegisterView());
+        },
+        
+        dashboardRoute: function(){
+            App.content.show(new DashboardView());
         }
     };
     

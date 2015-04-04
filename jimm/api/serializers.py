@@ -3,15 +3,17 @@ from rest_framework import serializers, exceptions
 from django.utils.translation import ugettext_lazy as _
 
 from jimm.api.models import (
-    Client,
+    User,
     Order
 )
 
 
-class ClientSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
 
     class Meta:
-        model = Client
+        model = User
+        fields = ('id', 'username', 'email', 'password', 'phone')
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -51,9 +53,3 @@ class AuthTokenSerializer(serializers.Serializer):
 
         attrs['user'] = user
         return attrs
-
-
-class ClienSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Client

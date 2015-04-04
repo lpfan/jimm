@@ -7,3 +7,5 @@ def generate_uuid(length):
     :length: - specify the length of uuid string.
     """
     return uuid.uuid4().hex[:length]
+
+
