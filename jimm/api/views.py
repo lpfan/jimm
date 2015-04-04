@@ -6,10 +6,12 @@ from rest_framework.authtoken.models import Token
 
 from jimm.api.serializers import (
     OrderSerializer,
-    AuthTokenSerializer
+    AuthTokenSerializer,
+    UserSerializer
 )
 from jimm.api.models import (
-    Order
+    Order,
+    User
 )
 
 
@@ -45,3 +47,19 @@ class ObtainAuthToken(APIView):
         user = serializer.validated_data['user']
         token, created = Token.objects.get_or_create(user=user)
         return Response({'token': token.key})
+
+
+class RegisterView(APIView):
+
+    renderer_classes = (JSONRenderer,)
+
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        client = User()
+        client.username = serializer.validated_data['username']
+        client.email = serializer.validated_data['email']
+        client.phone = serializer.validated_data['phone']
+        client.set_password(serializer.validated_data['password'])
+        client.save()
+        return Response(data=UserSerializer(client).data, status=201)

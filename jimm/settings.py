@@ -54,6 +54,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'jimm.shared_lib.auth_backends.ClientAuthenticationBackend',
+)
+
 ROOT_URLCONF = 'jimm.urls'
 
 WSGI_APPLICATION = 'jimm.wsgi.application'

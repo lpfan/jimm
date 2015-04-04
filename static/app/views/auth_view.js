@@ -26,7 +26,19 @@ function($, _, Backbone, Marionette, Handlebars, authTemplate, authModel){
                 password: $('#js-auth-data input.js-password-input').val()
             }
             this.model.set(providedCredentials);
-            this.model.save();
+            this.model.save()
+                .done(function(data, textStatus, jqXHR){
+                    authToken = data.token;
+                    $.ajaxSetup({
+                        headers: { 'Authorization': 'Token ' + authToken }
+                    });
+                    require(['app'], function(app){
+                        app.trigger('dashboard:show');
+                    });
+                })
+                .fail(function(){
+                    
+                });
         }
     });
     

@@ -14,14 +14,19 @@ require.config({
         // Views
         orderView: 'views/order_view',
         authView: 'views/auth_view',
+        registerView: 'views/register_view',
+        dashboard_view: 'views/dashboard_view',
         // Templates
         orderContentTemplate: 'templates/order_template.hb',
         authTemplate: 'templates/auth_template.hb',
+        registerTemplate: 'templates/register_template.hb',
+        dashboard_template: 'templates/dashboard_template.hb',
         // Collections,
         orderCollection: 'collections/order',
         // Model,
         orderModel: 'models/order',
         authModel: 'models/auth',
+        clientModel: 'models/client',
     },
     
     shim: {
