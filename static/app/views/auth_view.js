@@ -32,9 +32,7 @@ function($, _, Backbone, Marionette, Handlebars, authTemplate, authModel){
                     $.ajaxSetup({
                         headers: { 'Authorization': 'Token ' + authToken }
                     });
-                    require(['app'], function(app){
-                        app.trigger('dashboard:show');
-                    });
+                    //this.trigger('dashboard');
                 })
                 .fail(function(){
                     

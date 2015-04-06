@@ -15,7 +15,11 @@
         <ul class="nav nav-pills">
             <li><a href="#order">Order</a></li>
             <li><a href="#register">Register</a></li>
-            <li><a href="#auth">Login</a></li>
+            {% if user.is_authenticated %}
+                <li><span>{{user.email}}</span><a href="#">logout</a></li>
+            {% else %}
+                <li><a href="#auth">Login</a></li>
+            {% endif %}
         </ul>
         <div id="content"></div>
     </div>
