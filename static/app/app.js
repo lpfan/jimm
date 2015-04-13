@@ -66,6 +66,11 @@ define([
         this.navigate('register');
         Api.registerRoute();
     });
+    
+    App.on('dashboard', function(){
+        this.navigate('dashboard');
+        Api.dashboardRoute();
+    });
 
     App.on('start', function(){
         App.addRegions({
