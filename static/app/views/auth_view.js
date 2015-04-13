@@ -5,8 +5,10 @@ define([
     'marionette',
     'handlebars',
     'text!authTemplate',
-    'authModel'],
-function($, _, Backbone, Marionette, Handlebars, authTemplate, authModel){
+    'authModel',
+    'user_model'
+],
+function($, _, Backbone, Marionette, Handlebars, authTemplate, authModel, UserModel){
     var authView = Marionette.ItemView.extend({
         template: Handlebars.compile(authTemplate),
         className: 'row',
@@ -28,11 +30,14 @@ function($, _, Backbone, Marionette, Handlebars, authTemplate, authModel){
             this.model.set(providedCredentials);
             this.model.save()
                 .done(function(data, textStatus, jqXHR){
-                    authToken = data.token;
+                    var authToken = data.token;
                     $.ajaxSetup({
                         headers: { 'Authorization': 'Token ' + authToken }
                     });
-                    //this.trigger('dashboard');
+                    
+                    var user = new UserModel(data);
+                    var App = require('app');
+                    App.currentUser = user;
                 })
                 .fail(function(){
                     

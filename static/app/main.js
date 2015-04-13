@@ -27,6 +27,7 @@ require.config({
         orderModel: 'models/order',
         authModel: 'models/auth',
         clientModel: 'models/client',
+        user_model: 'models/user',
     },
     
     shim: {
