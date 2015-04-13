@@ -4,8 +4,9 @@ define([
     'backbone',
     'marionette',
     'handlebars',
-    'text!dashboard_template'
-], function($, _, Backbone, Marionette, Handlebars, dashboardTemplate){
+    'text!dashboard_template',
+    'user_model'
+], function($, _, Backbone, Marionette, Handlebars, dashboardTemplate, UserModel){
     var DashboardView = Marionette.LayoutView.extend({
         template: Handlebars.compile(dashboardTemplate),
         className: 'row',
@@ -20,7 +21,7 @@ define([
         },
         
         initialize: function(){
-            this.model = 
+            this.model = new UserModel();
         }
     });
     return DashboardView;

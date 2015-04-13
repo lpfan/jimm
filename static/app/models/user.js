@@ -7,7 +7,7 @@ define([
     'config'
 ], function($, _, Backbone, Marionette, config){
     var currentUser = Backbone.Model.extend({
-        localStorage: new Backbone.LocalStorage(config.currentUserKey);
+        localStorage: new Backbone.LocalStorage(config.currentUserKey)
     });
     return currentUser;
 });
