@@ -11,6 +11,7 @@ require.config({
         handlebars: 'lib/handlebars',
         marionette: 'lib/backbone.marionette',
         text: 'lib/requirejs-text',
+        localstorage: 'lib/backbone.localStorage',
         // Views
         orderView: 'views/order_view',
         authView: 'views/auth_view',

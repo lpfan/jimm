@@ -1,6 +1,7 @@
 define([], function(){
     var configuration = {
-        apiUrl: '/api'
+        apiUrl: '/api',
+        currentUserKey: 'currentUser',
     };
     return configuration;
 });
