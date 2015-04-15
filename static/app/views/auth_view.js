@@ -30,14 +30,8 @@ function($, _, Backbone, Marionette, Handlebars, authTemplate, authModel, UserMo
             this.model.set(providedCredentials);
             this.model.save()
                 .done(function(data, textStatus, jqXHR){
-                    var authToken = data.token;
-                    $.ajaxSetup({
-                        headers: { 'Authorization': 'Token ' + authToken }
-                    });
-                    
-                    var user = new UserModel(data);
-                    var App = require('app');
-                    App.currentUser = user;
+                    localStorage['authToken'] = data.token;
+                    window.location.href = '#dashboard';
                 })
                 .fail(function(){
                     

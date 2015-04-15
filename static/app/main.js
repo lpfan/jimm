@@ -12,18 +12,23 @@ require.config({
         marionette: 'lib/backbone.marionette',
         text: 'lib/requirejs-text',
         localstorage: 'lib/backbone.localStorage',
+        controller: 'lib/backbone.controller',
+        
         // Views
         orderView: 'views/order_view',
         authView: 'views/auth_view',
         registerView: 'views/register_view',
         dashboard_view: 'views/dashboard_view',
+        order_list_view: 'views/order_list_view',
+        order_item_view: 'views/order_item_view',
         // Templates
         orderContentTemplate: 'templates/order_template.hb',
         authTemplate: 'templates/auth_template.hb',
         registerTemplate: 'templates/register_template.hb',
         dashboard_template: 'templates/dashboard_template.hb',
+        order_item_template: 'templates/order_item_template.hb',
         // Collections,
-        orderCollection: 'collections/order',
+        order_collection: 'collections/order',
         // Model,
         orderModel: 'models/order',
         authModel: 'models/auth',
@@ -38,6 +43,9 @@ require.config({
         backbone: {
             deps: ["jquery", "underscore", "json2"],
             exports: "Backbone"
+        },
+        controller: {
+            deps: ['underscore', 'backbone']
         }
     }
 });

@@ -3,11 +3,10 @@ define([
     'underscore',
     'backbone',
     'marionette',
-    'localstorage',
     'config'
 ], function($, _, Backbone, Marionette, config){
     var currentUser = Backbone.Model.extend({
-        localStorage: new Backbone.LocalStorage(config.currentUserKey)
+        urlRoot: config.apiUrl + '/current_user/',
     });
     return currentUser;
 });

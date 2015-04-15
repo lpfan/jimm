@@ -1,4 +1,4 @@
-<div class="col-xs-2">
+<div id="order-detail" class="col-xs-2">
     Order description
 </div>
 <div class="col-xs-10">

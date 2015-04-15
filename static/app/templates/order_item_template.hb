@@ -1,0 +1,1 @@
+<a href="#">{{bike}}<span>{{created_date}}</span></a>

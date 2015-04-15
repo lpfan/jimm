@@ -63,3 +63,11 @@ class RegisterView(APIView):
         client.set_password(serializer.validated_data['password'])
         client.save()
         return Response(data=UserSerializer(client).data, status=201)
+
+
+class CurrentUserView(APIView):
+
+    renderer_classes = (JSONRenderer,)
+
+    def get(self, request):
+        return Response({'username': 'Misha'})

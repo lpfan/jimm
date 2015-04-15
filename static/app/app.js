@@ -30,7 +30,8 @@ define([
         return Backbone.history.fragment
     };
     
-    var API = {
+    var API = { 
+        
         orderRoute: function(){
             App.content.show(new OrderView());
         },
@@ -59,7 +60,7 @@ define([
     
     App.on('auth', function(){
         this.navigate('auth');
-        Api.authRoute();
+        API.authRoute();
     });
     
     App.on('register', function(){
@@ -69,7 +70,12 @@ define([
     
     App.on('dashboard', function(){
         this.navigate('dashboard');
-        Api.dashboardRoute();
+        API.dashboardRoute();
+    });
+    
+    App.on('order', function(){
+        this.navigate('order');
+        API.orderRoute();
     });
 
     App.on('start', function(){
@@ -87,8 +93,12 @@ define([
         
         Backbone.history.start();
         
-        if(this.getCurrentRoute === ""){
-            this.trigger('order');
+        if(this.getCurrentRoute() === ""){
+            if(localStorage['authToken']){
+                this.trigger('dashboard');
+            } else {
+                this.trigger('order');
+            }
         }
     });
     
